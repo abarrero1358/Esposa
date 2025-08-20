@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4 Años de Amor - Para Alisson</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #0a0a2a, #1a1a4a, #2d2b55);
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow-x: hidden;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 800px;
+            width: 100%;
+            text-align: center;
+            padding: 30px;
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 20px;
+            box-shadow: 0 0 30px rgba(100, 100, 255, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .container::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, rgba(0, 0, 0, 0) 70%);
+            transform: rotate(30deg);
+            z-index: -1;
+        }
+        
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: #ff4d94;
+            text-shadow: 0 0 15px rgba(255, 77, 148, 0.7);
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { text-shadow: 0 0 15px rgba(255, 77, 148, 0.7); }
+            50% { text-shadow: 0 0 25px rgba(255, 77, 148, 1), 0 0 35px rgba(255, 77, 148, 0.5); }
+            100% { text-shadow: 0 0 15px rgba(255, 77, 148, 0.7); }
+        }
+        
+        .heart {
+            color: #ff4d94;
+            font-size: 2rem;
+            margin: 10px 0;
+            animation: heartbeat 1.5s infinite;
+        }
+        
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+        
+        .message {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin: 20px 0;
+            text-align: center;
+            color: #f0f0f0;
+        }
+        
+        .lyrics {
+            font-style: italic;
+            margin: 25px 0;
+            padding: 15px;
+            border-left: 3px solid #ff4d94;
+            background: rgba(255, 77, 148, 0.1);
+            text-align: center;
+        }
+        
+        .btn {
+            background: linear-gradient(45deg, #ff4d94, #6a11cb);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            margin-top: 30px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(106, 17, 203, 0.4);
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(106, 17, 203, 0.6);
+            background: linear-gradient(45deg, #ff6a9f, #7c2be8);
+        }
+        
+        .photo-frame {
+            width: 200px;
+            height: 200px;
+            margin: 20px auto;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 5px solid #ff4d94;
+            box-shadow: 0 0 20px rgba(255, 77, 148, 0.5);
+            position: relative;
+        }
+        
+        .photo-placeholder {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #6a11cb, #ff4d94);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 0.9rem;
+            text-align: center;
+            padding: 10px;
+        }
+        
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .star {
+            position: absolute;
+            background-color: white;
+            border-radius: 50%;
+            animation: twinkle linear infinite;
+        }
+        
+        @keyframes twinkle {
+            0% { opacity: 0; }
+            50% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+        
+        .countdown {
+            font-size: 1.5rem;
+            margin: 20px 0;
+            color: #ffdd00;
+        }
+        
+        .audio-player {
+            margin: 25px auto;
+            width: 300px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .player-controls {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .play-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: #ff4d94;
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+        
+        .play-btn:hover {
+            transform: scale(1.1);
+            background: #ff6a9f;
+        }
+        
+        .volume-control {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .volume-slider {
+            width: 80px;
+            -webkit-appearance: none;
+            height: 5px;
+            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.3);
+            outline: none;
+        }
+        
+        .volume-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: #ff4d94;
+            cursor: pointer;
+        }
+        
+        .song-info {
+            text-align: center;
+            margin-top: 5px;
+            font-size: 0.9rem;
+            color: #ffdd00;
+        }
+        
+        /* Estilos para la página del juego */
+        #game-page {
+            display: none;
+        }
+        
+        .question-container {
+            margin: 20px 0;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            text-align: left;
+        }
+        
+        .question {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            color: #ffdd00;
+        }
+        
+        .options {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 10px;
+        }
+        
+        .option {
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .option:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .option.selected {
+            background: rgba(106, 17, 203, 0.7);
+        }
+        
+        .option.correct {
+            background: rgba(0, 200, 0, 0.5);
+        }
+        
+        .option.incorrect {
+            background: rgba(200, 0, 0, 0.5);
+        }
+        
+        .prizes-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .prize-item {
+            width: 120px;
+            padding: 15px 10px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        
+        .prize-item.unlocked {
+            background: rgba(106, 17, 203, 0.7);
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(106, 17, 203, 0.5);
+        }
+        
+        .prize-icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: #ff4d94;
+        }
+        
+        .prize-item.unlocked .prize-icon {
+            color: #ffdd00;
+        }
+        
+        .prize-name {
+            font-size: 0.9rem;
+        }
+        
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        
+        .prize-message {
+            display: none;
+            margin-top: 20px;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+            border-left: 5px solid #ffdd00;
+        }
+    </style>
+</head>
+<body>
+    <div class="stars"></div>
+    
+    <!-- Página de Inicio -->
+    <div id="home-page" class="container">
+        <h1>4 Años Juntos</h1>
+        <div class="heart">❤</div>
+        
+        <!-- DONDE COLOCAR TU FOTO: 
+             Reemplaza el div con clase "photo-placeholder" con:
+             <img src="URL_DE_TU_FOTO" style="width:100%; height:100%; object-fit:cover;">
+        -->
+        <div class="photo-frame">
+            <img src="IMG_20190908_135356.jpg" style="width:95%; height:100%; ">
+        </div>
+        
+        <p class="message">Querida Esposa,</p>
+        
+        <div class="lyrics">
+            <p>Hoy celebramos 4 años juntos, y quiero decirte que lo que siento por ti no es nuevo,</p>
+            <p>sino más fuerte cada día. Eres mi compañera, mi confidente y mi amiga incondicional.</p>
+            <p>La que mejor me conoce, la que siempre está conmigo, la que me da fuerzas cuando más lo necesito.</p>
+            <br>
+            <p>Hemos pasado momentos buenos y otros difíciles, pero siempre has estado a mi lado,</p>
+            <p>firme, fiel y sincera. Por eso te agradezco con todo mi corazón, porque contigo la vida tiene sentido</p>
+            <p>y cada día encuentro un motivo más para amarte.</p>
+            <br>
+            <p>Gracias por ser mi orgullo, mi amante, mi gran amiga… mi compañera de vida.</p>
+            <p>Te amo y quiero seguir caminando a tu lado siempre. ❤️</p>
+            <br>
+            <p>Tu Esposo...</p>
+        </div>
+        
+        <div class="countdown">Nuestro amor: 4 años, 0 meses, 0 días y contando...</div>
+        
+        <!-- Reproductor de audio mejorado -->
+        <div class="audio-player">
+            <div class="player-controls">
+                <button class="play-btn" id="playBtn"><i class="fas fa-play"></i></button>
+                <div class="volume-control">
+                    <i class="fas fa-volume-up" style="color: #ff4d94;"></i>
+                    <input type="range" class="volume-slider" id="volumeSlider" min="0" max="1" step="0.1" value="0.7">
+                </div>
+            </div>
+            <div class="song-info">
+                <!-- CAMBIAR EL NOMBRE DE LA CANCIÓN AQUÍ -->
+                <p>Vico C - Compañera</p>
+                <p>Canción para dedicar</p>
+            </div>
+        </div>
+        
+        <button class="btn" onclick="startGame()">¡Que Empiece el Juego!</button>
+    </div>
+    
+    <!-- Página del Juego -->
+    <div id="game-page" class="container">
+        <h1>Juego de Aniversario</h1>
+        <div class="heart">❤</div>
+        
+        <p class="message">Responde correctamente las preguntas para desbloquear tus premios.</p>
+        
+        <div class="prizes-container" id="prizes-container">
+            <!-- Premios que se desbloquean con cada respuesta correcta -->
+            <div class="prize-item" id="prize-1">
+                <div class="prize-icon"><i class="fas fa-tshirt"></i></div>
+                <div class="prize-name">Pantalón</div>
+            </div>
+            <div class="prize-item" id="prize-2">
+                <div class="prize-icon"><i class="fas fa-home"></i></div>
+                <div class="prize-name">Reforma de Oficina</div>
+            </div>
+            <div class="prize-item" id="prize-3">
+                <div class="prize-icon"><i class="fas fa-ticket-alt"></i></div>
+                <div class="prize-name">Sorrpresa Concertada</div>
+            </div>
+            <div class="prize-item" id="prize-4">
+                <div class="prize-icon"><i class="fas fa-utensils"></i></div>
+                <div class="prize-name">Cena Romántica</div>
+            </div>
+            <div class="prize-item" id="prize-5">
+                <div class="prize-icon"><i class="fas fa-gem"></i></div>
+                <div class="prize-name">Pendientes</div>
+            </div>
+            <div class="prize-item" id="prize-6">
+                <div class="prize-icon"><i class="fas fa-gift"></i></div>
+                <div class="prize-name">Premio Sorpresa</div>
+            </div>
+        </div>
+        
+        <div class="question-container" id="question-container">
+            <!-- Las preguntas se cargarán aquí mediante JavaScript -->
+        </div>
+        
+        <div class="navigation">
+            <button class="btn" id="prev-btn" style="display:none; padding: 10px 20px;"><i class="fas fa-arrow-left"></i> Anterior</button>
+            <button class="btn" id="next-btn" style="padding: 10px 20px;">Siguiente <i class="fas fa-arrow-right"></i></button>
+        </div>
+        
+        <div class="prize-message" id="prize-message">
+            <h2>¡Felicidades!</h2>
+            <p>Has respondido todas las preguntas correctamente. ¡Disfruta de todos tus premios!</p>
+            <p>Enviame un pantallazo</p>
+            <button class="btn" onclick="backToHome()">Volver al Inicio</button>
+        </div>
+    </div>
+
+    <script>
+        // Crear estrellas de fondo
+        function createStars() {
+            const stars = document.querySelector('.stars');
+            const starsCount = 150;
+            
+            for (let i = 0; i < starsCount; i++) {
+                const star = document.createElement('div');
+                star.classList.add('star');
+                
+                const size = Math.random() * 3;
+                star.style.width = `${size}px`;
+                star.style.height = `${size}px`;
+                
+                star.style.left = `${Math.random() * 100}%`;
+                star.style.top = `${Math.random() * 100}%`;
+                
+                star.style.animationDuration = `${Math.random() * 3 + 2}s`;
+                star.style.animationDelay = `${Math.random() * 2}s`;
+                
+                stars.appendChild(star);
+            }
+        }
+        
+        // Actualizar contador de tiempo juntos
+        function updateCountdown() {
+            // Fecha de aniversario (puedes cambiarla por tu fecha real)
+            const anniversary = new Date('2021-08-17');
+            const now = new Date();
+            
+            const diff = now - anniversary;
+            const years = Math.floor(diff / (1000 * 60 * 60 * 24 * 365));
+            const months = Math.floor((diff % (1000 * 60 * 60 * 24 * 365)) / (1000 * 60 * 60 * 24 * 30));
+            const days = Math.floor((diff % (1000 * 60 * 60 * 24 * 30)) / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            
+            document.querySelector('.countdown').textContent = 
+                `Nuestro amor: ${years} años, ${months} meses, ${days} días y ${hours} horas de felicidad`;
+        }
+        
+        // Controlar audio
+        let audioPlaying = false;
+        let audio = null;
+        
+        function setupAudioPlayer() {
+            const playBtn = document.getElementById('playBtn');
+            const volumeSlider = document.getElementById('volumeSlider');
+            
+            // Crear elemento de audio
+            audio = new Audio();
+            audio.loop = true;
+            
+
+            // CAMBIAR LA URL DE LA CANCIÓN AQUÍ:
+            // Necesitas un archivo de audio en formato MP3/OGG (no un enlace de YouTube)
+            audio.src = 'companera.mp3';
+            
+            // Configurar evento de clic para el botón de reproducción
+            playBtn.addEventListener('click', function() {
+                if (audioPlaying) {
+                    audio.pause();
+                    playBtn.innerHTML = '<i class="fas fa-play"></i>';
+                } else {
+                    audio.play().catch(error => {
+                        console.error("Error al reproducir audio:", error);
+                        alert("Para reproducir la música, por favor haz clic en cualquier parte de la página primero y luego en el botón de play.");
+                    });
+                    playBtn.innerHTML = '<i class="fas fa-pause"></i>';
+                }
+                
+                audioPlaying = !audioPlaying;
+            });
+            
+            // Configurar control de volumen
+            volumeSlider.addEventListener('input', function() {
+                audio.volume = volumeSlider.value;
+            });
+            
+            // Permitir la reproducción después de la interacción del usuario
+            document.body.addEventListener('click', function() {
+                if (audio && audio.context === undefined) {
+                    // Este código ayuda a desbloquear la reproducción de audio en móviles
+                    audio.play().then(() => {
+                        audio.pause();
+                        playBtn.innerHTML = '<i class="fas fa-play"></i>';
+                        audioPlaying = false;
+                    }).catch(error => {
+                        console.log("Audio listo después de interacción del usuario");
+                    });
+                }
+            }, { once: true });
+        }
+        
+        // Iniciar juego
+        function startGame() {
+            document.getElementById('home-page').style.display = 'none';
+            document.getElementById('game-page').style.display = 'block';
+            
+            loadQuestion(currentQuestionIndex);
+        }
+        
+        // Volver al inicio
+        function backToHome() {
+            document.getElementById('home-page').style.display = 'block';
+            document.getElementById('game-page').style.display = 'none';
+        }
+        
+        // Sistema de preguntas y respuestas
+        let currentQuestionIndex = 0;
+        let correctAnswers = 0;
+        
+        // PREGUNTAS PERSONALIZABLES:
+        // Modifica estas preguntas, opciones y respuestas correctas según tus preferencias
+        const questions = [
+            {
+                question: "¿Dónde fue nuestra primera cita?",
+                options: ["En el cine", "La luz de la luna", "En el parque", "en quinto de primaria"],
+                correctIndex: 1 // Cambia este número según la respuesta correcta (0-based)
+            },
+            {
+                question: "¿Cuál es mi comida favorita?",
+                options: ["Pizza", "Sushi", "Habichuelas", "Hamburguesas"],
+                correctIndex: 2
+            },
+            {
+                question: "¿Qué año nos casamos?",
+                options: ["2018", "2019", "2021", "2020"],
+                correctIndex: 2
+            },
+            {
+                question: "¿Cuál es mi color favorito?",
+                options: ["Naranja", "Rojo", "Negro", "Verde"],
+                correctIndex: 0
+            },
+            {
+                question: "¿Dónde pasamos nuestra luna de miel?",
+                options: ["Anahuac", "Cartagena", "Amazonas", "No fuimos de luna de miel"],
+                correctIndex: 1
+            },
+            {
+                question: "¿Qué me gusta hacer los fines de semana?",
+                options: ["Dormir hasta tarde", "Salir a comer", "Viajar", "Ver películas"],
+                correctIndex: 0
+            }
+        ];
+        
+        function loadQuestion(index) {
+            const questionContainer = document.getElementById('question-container');
+            const question = questions[index];
+            
+            questionContainer.innerHTML = `
+                <div class="question">Pregunta ${index + 1}/${questions.length}: ${question.question}</div>
+                <div class="options">
+                    ${question.options.map((option, i) => `
+                        <div class="option" data-index="${i}">${option}</div>
+                    `).join('')}
+                </div>
+            `;
+            
+            // Configurar event listeners para las opciones
+            document.querySelectorAll('.option').forEach(option => {
+                option.addEventListener('click', function() {
+                    if (this.classList.contains('selected')) return;
+                    
+                    // Quitar selección anterior
+                    document.querySelectorAll('.option').forEach(opt => {
+                        opt.classList.remove('selected');
+                    });
+                    
+                    // Marcar esta opción como seleccionada
+                    this.classList.add('selected');
+                    
+                    // Verificar si la respuesta es correcta
+                    const selectedIndex = parseInt(this.dataset.index);
+                    if (selectedIndex === question.correctIndex) {
+                        // Respuesta correcta
+                        this.classList.add('correct');
+                        correctAnswers++;
+                        
+                        // Desbloquear premio correspondiente
+                        unlockPrize(index);
+                        
+                        // Avanzar automáticamente después de un breve delay
+                        setTimeout(() => {
+                            if (index < questions.length - 1) {
+                                currentQuestionIndex++;
+                                loadQuestion(currentQuestionIndex);
+                                updateNavigation();
+                            } else {
+                                // Última pregunta respondida
+                                document.getElementById('prize-message').style.display = 'block';
+                                document.getElementById('next-btn').style.display = 'none';
+                                document.getElementById('prev-btn').style.display = 'none';
+                                document.getElementById('question-container').style.display = 'none';
+                            }
+                        }, 1500);
+                    } else {
+                        // Respuesta incorrecta
+                        this.classList.add('incorrect');
+                        // Marcar la respuesta correcta
+                        document.querySelectorAll('.option')[question.correctIndex].classList.add('correct');
+                    }
+                });
+            });
+            
+            updateNavigation();
+        }
+        
+        function unlockPrize(questionIndex) {
+            const prizeItem = document.getElementById(`prize-${questionIndex + 1}`);
+            prizeItem.classList.add('unlocked');
+        }
+        
+        function updateNavigation() {
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+            
+            if (currentQuestionIndex > 0) {
+                prevBtn.style.display = 'block';
+            } else {
+                prevBtn.style.display = 'none';
+            }
+            
+            if (currentQuestionIndex < questions.length - 1) {
+                nextBtn.style.display = 'block';
+            } else {
+                nextBtn.style.display = 'none';
+            }
+        }
+        
+        // Configurar navegación
+        document.getElementById('next-btn').addEventListener('click', function() {
+            if (currentQuestionIndex < questions.length - 1) {
+                currentQuestionIndex++;
+                loadQuestion(currentQuestionIndex);
+            }
+        });
+        
+        document.getElementById('prev-btn').addEventListener('click', function() {
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                loadQuestion(currentQuestionIndex);
+            }
+        });
+        
+        // Inicializar
+        window.onload = function() {
+            createStars();
+            updateCountdown();
+            setupAudioPlayer();
+            setInterval(updateCountdown, 3600000); // Actualizar cada hora
+        };
+    </script>
+</body>
+</html>
